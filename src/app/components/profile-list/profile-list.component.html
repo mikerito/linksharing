@@ -1,0 +1,15 @@
+<div class="s12 cards-container">
+  <input type="text" class="search" placeholder="Search By Name" style="width:300px" [(ngModel)]="PsearchTerm">
+  <ul *ngFor="let profile of filteredProfile" class="collection">
+    <li class="collection-item">
+      <div class="groupTime"> {{ profile.bio  }}
+      </div>
+      <div class="groupComponents">
+        <div class="titleHead" id="test1">
+          <a class="titleHead" [routerLink]="['/users', profile.displayName ]"> {{profile.displayName}}
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,56 @@
+<!-- <div *ngIf="groups?.length > 0;else noGroups"> -->
+<div *ngIf="displayHead">
+  <div id="headWrapper">
+    <h2 class="heading"> Your Groups </h2>
+
+    <input type="text" class="search" placeholder="Search By Name" style="width:300px" [(ngModel)]="GsearchTerm">
+  </div>
+</div>
+<div class="s12 cards-container">
+  <ul *ngFor="let group of filteredGroups" class="collection">
+
+    <li class="collection-item">
+      <div class="groupTime"> {{ group.time  }}</div>
+      <a class="secondary-content">
+        <i *ngIf="!editState" (click)="editGroup($event, group)" class="fa fa-pencil"></i>
+
+
+        <i *ngIf="editState && groupToEdit.id == group.id" (click)="clearState()" class="fa fa-compress"></i>
+      </a>
+      <div class="groupComponents">
+        <div class="titleHead" id="test1"> <a class="titleHead" [routerLink]="['/groups', group.title ]"> {{group.title}} </a></div>
+        <div class="commentHead"> {{group.description}}
+        </div>
+        <div class="memberHead"> Members: {{ group.members }}</div>
+      </div>
+
+
+      <div *ngIf="editState && groupToEdit.id == group.id" class="edit">
+        <form (ngSubmit)="updateGroup(group)">
+          <div class="row">
+
+            <div class=".input-field col s6 editTitle">
+              <input type="text" placeholder="Add Title" class="inputField" [(ngModel)]="group.title" name="title">
+            </div>
+
+            <div class=".input-field col s6 editComment">
+              <input type="text" placeholder="Add Tags" class="inputField" [(ngModel)]="group.description" name="description">
+            </div>
+          </div>
+
+          <div>
+            <input type="submit" value="Update" class="updateBtn button">
+            <button (click)="deleteGroup($event, group)" class="deleteBtn">Delete</button>
+          </div>
+
+        </form>
+      </div>
+
+    </li>
+  </ul>
+</div>
+
+<ng-template #noGroups>
+  <br>
+  <h5>You need to refresh to see this </h5>
+</ng-template>

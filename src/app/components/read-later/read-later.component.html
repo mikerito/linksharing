@@ -1,0 +1,73 @@
+<div *ngIf="displayHead">
+  <div id="headWrapper">
+    <h2 class="heading"> {{groupName}}
+    </h2>
+    <input type="text" class="search" placeholder="Search By Name" style="width:300px" [(ngModel)]="searchTerm">
+  </div>
+</div>
+
+<div *ngIf="posts?.length > 0;else noPosts">
+  <ul *ngFor="let post of filteredPosts | postGroupFilterPipe:groupName; let i = index;" class="collection">
+    <li class="collection-item">
+      <!--<div class="postTime"> {{  post.time  }}</div>-->
+      <a class="secondary-content">
+        <i *ngIf="!editState" (click)="editPost($event, post)" class="fa fa-pencil"></i>
+        <i *ngIf="editState && postToEdit.id == post.id" (click)="clearState()" class="fa fa-compress"></i>
+      </a>
+      <div class="postComponents">
+        <div class="urlHead"> {{ post.userName }} </div>
+        <div class="titleHead" id="test1">
+          <a href={{post.url}} class="titleHead" target="_blank"> {{post.title}} </a>
+        </div>
+<div class='readLaterDiv'>
+    <label class='switch'>
+        <input type="checkbox" class="filled-in" [(ngModel)]="posts[i].checked" />
+        <span>Read Later</span>
+      </label>
+  </div>
+        <div class="commentHead"> {{post.description}}
+        </div>
+        <div [routerLink]="['/groups', post.group ]" class="group"> {{post.group}}
+        </div>
+
+        <!-- <br>
+            <i *ngIf="!editState" (click)="likePost($event, like)" class="fa fa-hand-rock-o hand"></i>-->
+      </div>
+
+
+      <div *ngIf="editState && postToEdit.id == post.id">
+        <form (ngSubmit)="updatePost(post)">
+          <div class="row">
+
+            <div class=".input-field col s6 editTitle">
+              <input type="text" placeholder="Add Title" class="inputField" [(ngModel)]="post.title" name="title">
+            </div>
+
+            <div class=".input-field col s6 editComment">
+              <input type="text" placeholder="Add Tags" class="inputField" [(ngModel)]="post.description" name="description">
+            </div>
+
+            <div class=".input-field col s6 editUrl">
+              <input type="text" placeholder="edit Url" class="inputField" [(ngModel)]="post.url" name="url">
+            </div>
+          </div>
+
+          <div>
+            <input type="submit" value="Update" class="updateBtn button">
+            <button (click)="deletePost($event, post)" class="deleteBtn">Delete</button>
+          </div>
+
+        </form>
+      </div>
+
+
+
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
+</div>
+
+<ng-template #noPosts>
+  <h5>Loading... </h5>
+  <router-outlet></router-outlet>
+</ng-template>
