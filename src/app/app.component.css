@@ -1,0 +1,16 @@
+.container {
+    padding-bottom: 100px;
+}
+
+.verticaltext {
+    float: left;
+    position: absolute;
+		transform: rotate(90deg);
+		transform-origin: left top 0;
+		margin-left: 50px;
+		padding: 10px;
+		opacity: 0.9;
+		font-size: 1.8em;
+		color: #000;
+		text-transform: uppercase;
+}

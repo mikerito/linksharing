@@ -1,0 +1,55 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Linksharing</title>
+  <base href="/">
+
+
+      <script src="https://www.gstatic.com/firebasejs/5.7.0/firebase.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-firestore.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Gothic+A1:500,700,900" rel="stylesheet">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</head>
+<body>
+<div class="sticky" >
+
+
+  <app-navbar></app-navbar>
+</div>
+<!--<div class="verticaltext">
+  <div *ngIf="user.uid | async as uid; else login">
+      Logged in as user {{uid}}<button (click)="user.logout()">Logout</button>
+  </div>
+
+</div>
+
+  <ng-template #login>
+      Login with Google <button (click)="user.login()">Login</button>
+  </ng-template>-->
+
+    <!-- <app-add-post></app-add-post>
+
+    <app-posts></app-posts> -->
+<div class="container">
+
+    <router-outlet></router-outlet>
+
+</div>
+
+
+
+</body>
+</html>

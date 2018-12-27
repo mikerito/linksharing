@@ -1,0 +1,23 @@
+.heading {
+float: left;
+font-family: "Gothic A1";
+font-weight: 700;
+padding-top: 60px;
+}
+
+.headWrapper {
+    width:100%;
+    display: inline-block;
+      position: relative;
+}
+
+.search {
+position: absolute;
+top: 0;
+right: 0;
+}
+
+.button {
+    cursor: pointer;
+      outline: none;
+}

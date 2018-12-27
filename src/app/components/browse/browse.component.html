@@ -1,0 +1,22 @@
+<div class="headWrapper">
+  <div>
+    <h2 class="heading">Browse</h2>
+  </div>
+  <h5 class="button heading" [routerLink]="['/browse/users']">Users &nbsp;</h5>
+  <h5 class="button heading" [routerLink]="['/browse/groups' ]">Groups &nbsp;</h5>
+  <h5 class="button heading" [routerLink]="['/browse/posts' ]">Posts</h5>
+  <input type="text" class="search" placeholder="Search By Name" style="width:300px" [(ngModel)]="searchTerm">
+</div>
+
+
+<div *ngIf="groupName == 'posts'">
+  <app-posts></app-posts>
+</div>
+
+<div *ngIf="groupName == 'groups'">
+  <app-groups></app-groups>
+</div>
+
+<div *ngIf="groupName == 'users'">
+  <app-profile-list></app-profile-list>
+</div>
